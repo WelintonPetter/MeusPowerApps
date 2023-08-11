@@ -1,0 +1,287 @@
+SListaDeProdutos As screen:
+    BackgroundImage: =
+    Fill: =RGBA(237, 237, 237, 1)
+
+    Rectangle1_1 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        Fill: =RGBA(128, 48, 199, 1)
+        Height: =113
+        Width: =640
+        ZIndex: =1
+
+    Rectangle1 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        Fill: =RGBA(128, 48, 199, 1)
+        Height: =153
+        Width: =640
+        Y: =983
+        ZIndex: =2
+
+    Label1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Font: =Font.Georgia
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =30
+        Text: ="Lista De Estoque"
+        Width: =560
+        X: =40
+        Y: =22
+        ZIndex: =3
+
+    TextInput1 As text:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        Default: =If(IsBlankOrError(varcode1.Value),"",varcode1.Value)
+        Height: =70
+        HintText: ="Pesquise Um Produto..."
+        HoverColor: =RGBA(166, 166, 166, 1)
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =128
+        ZIndex: =4
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        DelayItemLoading: =true
+        Height: =749
+        Items: =Search(Estoque,TextInput1.Text, "NomeDoProduto", "Codigo")
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =144
+        Y: =216
+        ZIndex: =5
+
+        Button4 As button:
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =139
+            OnSelect: =Select(Parent)
+            Size: =24
+            Text: =""
+            Width: =598
+            Y: =5
+            ZIndex: =1
+
+        Image1 As image:
+            Height: =112
+            Image: =First(ThisItem.Attachments).Value
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =118
+            X: =15
+            Y: =21
+            ZIndex: =2
+
+        Title1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =20
+            Text: =ThisItem.NomeDoProduto
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 173
+            X: =144
+            Y: =4
+            ZIndex: =3
+
+        Subtitle1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =21
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: |-
+                ="Quantidade: " & ThisItem.Quantidade
+            VerticalAlign: =VerticalAlign.Top
+            Width: =145
+            X: =442
+            Y: =112
+            ZIndex: =4
+
+        Subtitle1_1 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =83
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: |-
+                ="Descrição: " & ThisItem.Descricao
+            VerticalAlign: =VerticalAlign.Top
+            Width: =297
+            X: =144
+            Y: =50
+            ZIndex: =6
+
+        Subtitle1_2 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =21
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: |-
+                ="Mínimo: " & ThisItem.QuantidadeMinima
+            VerticalAlign: =VerticalAlign.Top
+            Width: =111
+            X: =441
+            Y: =91
+            ZIndex: =7
+
+        Icon4 As icon.Error:
+            BorderColor: =RGBA(255, 0, 0, 1)
+            Color: =RGBA(255, 0, 0, 1)
+            Height: =124
+            Icon: =Icon.Error
+            OnSelect: =Select(Parent)
+            Visible: |
+                =ThisItem.Quantidade <ThisItem.QuantidadeMinima
+            Width: =118
+            X: =15
+            Y: =15
+            ZIndex: =8
+
+        Subtitle1_4 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =22
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: |-
+                ="Cod: " & ThisItem.Codigo
+            VerticalAlign: =VerticalAlign.Top
+            Width: =182
+            X: =441
+            Y: =40
+            ZIndex: =10
+
+        Icon3 As icon.NextArrow:
+            Color: =RGBA(0, 0, 0, 1)
+            Height: =52
+            Icon: =Icon.NextArrow
+            OnSelect: =Set(varSeleted,ThisItem);Navigate(SEditarProduto,ScreenTransition.Fade)
+            Width: =46
+            X: =550
+            Y: =51
+            ZIndex: =11
+
+    Label2 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =53
+        OnSelect: |
+            =Navigate(SNovoProduto, ScreenTransition.Fade)
+        Size: =21
+        Text: ="Adicionar Item"
+        Width: =225
+        X: =389
+        Y: =983
+        ZIndex: =6
+
+    Icon1 As icon.Paste:
+        Color: =RGBA(0, 0, 0, 1)
+        Height: =67
+        Icon: =Icon.Paste
+        OnSelect: |
+            =Set(varAllcodes,Leitor.Barcodes);
+            Set(varcode1, First(varAllcodes))
+        Width: =52
+        X: =532
+        Y: =128
+        ZIndex: =8
+
+    Label5 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =67
+        Size: =15
+        Text: ="V 1.2.0"
+        Width: =74
+        X: =566
+        ZIndex: =10
+
+    Arrow1_2 As arrow.backArrow:
+        Fill: =RGBA(2, 245, 59, 1)
+        Height: =70
+        OnSelect: =Navigate(SMenu, ScreenTransition.Fade)
+        Width: =70
+        X: =40
+        Y: =22
+        ZIndex: =11
+
+    Image23 As image:
+        Image: ='leitura-de-codigo-de-barras'
+        X: =110
+        Y: =1025
+        ZIndex: =13
+
+    Group1 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =17
+
+        Label2_1 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =29
+            OnSelect: =
+            Size: =21
+            Text: ="Scanear Item"
+            Width: =207
+            X: =75
+            Y: =996
+            ZIndex: =7
+
+        "Leitor As 'Leitor de Código de Barras'":
+            BorderFillColor: =RGBA(0, 0, 0, 0)
+            BorderThickness: =0
+            Disabled: =false
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledContentColor: =RGBA(0, 0, 0, 0)
+            DisabledFillColor: =RGBA(0, 0, 0, 0)
+            DisplayMode: =DisplayMode.Edit
+            FillColor: =RGBA(0, 0, 0, 0)
+            Height: =126
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverContentColor: =RGBA(255, 255, 255, 1)
+            HoverFillColor: =RGBA(0, 0, 0, 0)
+            PressedBorderColor: =RGBA(0, 0, 0, 0)
+            PressedContentColor: =RGBA(0, 0, 0, 0)
+            PressedFillColor: =RGBA(255, 255, 255, 1)
+            ScanningMode: ='BarcodeReader.ScanningMode'.AutomaticallyScan
+            Text: =""
+            TextColor: =RGBA(0, 0, 0, 0)
+            Visible: =true
+            Width: =171
+            X: =74
+            Y: =1010
+            ZIndex: =9
+
+        Image22 As image:
+            Height: =90
+            Image: =comprar
+            OnSelect: =Navigate(SNovoProduto, ScreenTransition.Fade)
+            Width: =90
+            X: =457
+            Y: =1025
+            ZIndex: =12
+

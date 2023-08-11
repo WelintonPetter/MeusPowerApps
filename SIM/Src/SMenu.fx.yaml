@@ -1,0 +1,307 @@
+SMenu As screen:
+
+    Button3_4 As button:
+        Height: =70
+        Size: =18
+        Text: ="CALENDÁRIO"
+        Width: =288
+        X: =31
+        Y: =650
+        ZIndex: =1
+
+    Button3_6 As button:
+        Height: =70
+        OnSelect: =Navigate(SPedencias, ScreenTransition.Fade)
+        Size: =18
+        Text: ="PENDENCIAS"
+        Width: =300
+        X: =334
+        Y: =150
+        ZIndex: =2
+
+    Button3_7 As button:
+        Height: =70
+        Size: =18
+        Text: ="PREVENTIVAS"
+        Width: =288
+        X: =334
+        Y: =250
+        ZIndex: =3
+
+    Button3_8 As button:
+        Height: =70
+        Size: =24
+        Text: ="PCM"
+        Width: =288
+        X: =334
+        Y: =350
+        ZIndex: =4
+
+    Button3_9 As button:
+        Height: =70
+        Size: =24
+        Text: ="MANUAIS"
+        Width: =288
+        X: =334
+        Y: =450
+        ZIndex: =5
+
+    Button3_1 As button:
+        Height: =70
+        Size: =18
+        Text: ="MAQUINAS"
+        Width: =288
+        X: =31
+        Y: =250
+        ZIndex: =6
+
+    Button3_2 As button:
+        Height: =70
+        Size: =18
+        Text: ="RELATORIOS"
+        Width: =288
+        X: =31
+        Y: =350
+        ZIndex: =7
+
+    Button3_3 As button:
+        Height: =70
+        Size: =18
+        Text: ="HISTORICOS"
+        Width: =288
+        X: =31
+        Y: =450
+        ZIndex: =8
+
+    Button3_5 As button:
+        Height: =70
+        Size: =18
+        Text: ="CHAMADOS"
+        Width: =288
+        X: =31
+        Y: =550
+        ZIndex: =9
+
+    Image5 As image:
+        Height: =70
+        Image: ='lista-de-pendencias'
+        OnSelect: =Navigate(SPedencias, ScreenTransition.Fade)
+        Width: =70
+        X: =334
+        Y: =150
+        ZIndex: =12
+
+    Image6 As image:
+        Height: =70
+        Image: ='maquina-de-fabrica'
+        Width: =70
+        X: =31
+        Y: =250
+        ZIndex: =13
+
+    Image9 As image:
+        Height: =70
+        Image: =consciente
+        Width: =70
+        X: =334
+        Y: =250
+        ZIndex: =14
+
+    Image11 As image:
+        Height: =70
+        Image: ='manutencao-web'
+        Width: =70
+        X: =31
+        Y: =550
+        ZIndex: =15
+
+    Image12 As image:
+        Height: =70
+        Image: =manutencao
+        Width: =70
+        X: =334
+        Y: =350
+        ZIndex: =16
+
+    Image13 As image:
+        Height: =70
+        Image: =planejamento
+        Width: =70
+        X: =31
+        Y: =350
+        ZIndex: =17
+
+    Image14 As image:
+        Height: =70
+        Image: ='planejamento (1)'
+        Width: =70
+        X: =31
+        Y: =650
+        ZIndex: =18
+
+    Image15 As image:
+        Height: =70
+        Image: =historia
+        Width: =70
+        X: =334
+        Y: =450
+        ZIndex: =19
+
+    Image16 As image:
+        Height: =70
+        Image: ='ordem-de-servico'
+        Width: =70
+        X: =31
+        Y: =450
+        ZIndex: =20
+
+    Rectangle1_2 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        Fill: =RGBA(128, 48, 199, 1)
+        Height: =113
+        Width: =640
+        ZIndex: =21
+
+    Button3_11 As button:
+        Height: =70
+        Size: =24
+        Text: ="  ESTOQUE   "
+        Width: =288
+        X: =334
+        Y: =650
+        ZIndex: =22
+
+    Image20 As image:
+        Image: =User().Image
+        RadiusBottomLeft: =2500
+        RadiusBottomRight: =2500
+        RadiusTopLeft: =2500
+        RadiusTopRight: =2500
+        X: =16
+        Y: =6
+        ZIndex: =23
+
+    Label6 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =25
+        Text: =User().FullName
+        Width: =375
+        X: =132
+        Y: =21
+        ZIndex: =26
+
+    Group3 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =26
+
+        Button3 As button:
+            Height: =70
+            OnSelect: =Navigate(SListaDeProdutos, ScreenTransition.Fade)
+            Size: =18
+            Text: ="  ESTOQUE   "
+            Width: =288
+            X: =31
+            Y: =150
+            ZIndex: =10
+
+        Image8 As image:
+            Height: =70
+            Image: =estoque
+            OnSelect: =Navigate(SListaDeProdutos, ScreenTransition.Fade)
+            Width: =70
+            X: =31
+            Y: =150
+            ZIndex: =11
+
+    Group4 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =26
+
+        Button3_10 As button:
+            Height: =70
+            OnSelect: =Navigate(SIA, ScreenTransition.Fade)
+            Size: =24
+            Text: ="IA "
+            Width: =288
+            X: =334
+            Y: =550
+            ZIndex: =24
+
+        Image10 As image:
+            Height: =70
+            Image: =ia
+            Width: =70
+            X: =334
+            Y: =550
+            ZIndex: =25
+
+    Button3_12 As button:
+        Height: =70
+        Size: =18
+        Text: ="AGENDAMENTO"
+        Width: =288
+        X: =31
+        Y: =850
+        ZIndex: =27
+
+    Button3_13 As button:
+        Height: =70
+        Size: =18
+        Text: ="  ESTOQUE   "
+        Width: =288
+        X: =31
+        Y: =750
+        ZIndex: =28
+
+    Button3_14 As button:
+        Height: =70
+        Size: =18
+        Text: ="AGENDAMENTO"
+        Width: =288
+        X: =334
+        Y: =850
+        ZIndex: =29
+
+    Button3_15 As button:
+        Height: =70
+        Size: =18
+        Text: ="  ESTOQUE   "
+        Width: =288
+        X: =334
+        Y: =750
+        ZIndex: =30
+
+    Rectangle1_6 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        Fill: =RGBA(128, 48, 199, 1)
+        Height: =113
+        Width: =640
+        Y: =1023
+        ZIndex: =31
+
+    Button3_16 As button:
+        Height: =70
+        Size: =18
+        Text: ="AGENDAMENTO"
+        Width: =288
+        X: =31
+        Y: =950
+        ZIndex: =32
+
+    Button3_17 As button:
+        Height: =70
+        Size: =18
+        Text: ="AGENDAMENTO"
+        Width: =288
+        X: =334
+        Y: =950
+        ZIndex: =33
+

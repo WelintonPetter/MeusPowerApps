@@ -1,0 +1,149 @@
+SEditarProduto As screen:
+
+    Rectangle1_4 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        Fill: =RGBA(128, 48, 199, 1)
+        Height: =125
+        Width: =640
+        ZIndex: =1
+
+    Label3 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =25
+        Text: ="Editar Produto"
+        Width: =560
+        X: =41
+        Y: =27
+        ZIndex: =2
+
+    Arrow1_1 As arrow.backArrow:
+        Fill: =RGBA(2, 245, 59, 1)
+        Height: =70
+        OnSelect: =Navigate(SListaDeProdutos, ScreenTransition.Fade)
+        Width: =70
+        X: =60
+        Y: =27
+        ZIndex: =3
+
+    Image3 As image:
+        Height: =347
+        Image: =Gallery1.Selected.Image1
+        Width: =352
+        X: =145
+        Y: =125
+        ZIndex: =4
+
+    Label4 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: |-
+            ="Produto: " & varSeleted.NomeDoProduto 
+        Width: =560
+        X: =41
+        Y: =472
+        ZIndex: =5
+
+    Label4_1 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =214
+        Size: =15
+        Text: |-
+            ="Descrição: " & varSeleted.Descricao
+        Width: =560
+        X: =37
+        Y: =542
+        ZIndex: =6
+
+    Label4_2 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =15
+        Text: |-
+            ="Codigo: " & varSeleted.Codigo
+        Width: =560
+        X: =37
+        Y: =740
+        ZIndex: =7
+
+    Label4_3 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: |-
+            ="Estoque Atual: " & varSeleted.Quantidade
+        Width: =560
+        X: =40
+        Y: =789
+        ZIndex: =8
+
+    Label4_4 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: |
+            ="Min: " & varSeleted.QuantidadeMinima
+        Width: =268
+        X: =369
+        Y: =789
+        ZIndex: =9
+
+    TextInput2 As text:
+        Default: =""
+        Format: =TextFormat.Number
+        Height: =75
+        HintText: ="Nova Quantidade"
+        Size: =18
+        Width: =285
+        X: =175
+        Y: =939
+        ZIndex: =10
+
+    Button2_1 As button:
+        DisplayMode: |-
+            =
+            If(IsBlank(TextInput2),
+            DisplayMode.Disabled,
+            DisplayMode.Edit)
+        Fill: =RGBA(2, 245, 59, 0.54)
+        Height: =70
+        OnSelect: |-
+            =Set(varPatch, Patch(Estoque,varSeleted,{Quantidade:Value (TextInput2.Text)}));
+            
+            If(IsBlank(varPatch),
+            
+            Notify("Ops,Parece Que Aconteceu Alguma Coisa... Tente Novamente!", NotificationType.Warning,1000),
+            
+            Notify("Dados Enviado Com Sucesso!", NotificationType.Success,1000));
+            Reset(TextInput2);
+            Navigate(SListaDeProdutos, ScreenTransition.Fade);
+        Size: =24
+        Text: ="Salvar"
+        Width: =280
+        X: =180
+        Y: =1051
+        ZIndex: =11
+
+    Label4_5 As label:
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: |-
+            ="Atualizar Estoque:"
+        Width: =292
+        X: =175
+        Y: =879
+        ZIndex: =12
+
+    Image19 As image:
+        Height: =50
+        Image: =pacotes
+        Width: =50
+        X: =398
+        Y: =951
+        ZIndex: =13
+
