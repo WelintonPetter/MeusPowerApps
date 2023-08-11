@@ -98,11 +98,3 @@ SEditarPendencia As screen:
         Y: =519
         ZIndex: =12
 
-    Image3_1 As image:
-        Height: =222
-        Image: =Gallery2_1.Selected.Finalizada_imagem
-        Width: =352
-        X: =267
-        Y: =800
-        ZIndex: =13
-
