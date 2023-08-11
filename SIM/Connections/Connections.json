@@ -1,0 +1,52 @@
+{
+  "9fe6806b-90b9-495e-b361-5ee0e885d081": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/shgogna/globalperconnector-train1/1.0.1639.3310/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://ssf0z.sharepoint.com/sites/EstoqueUtilidades": {
+        "dataSources": {
+          "Estoque": {
+            "tableName": "f7a25e90-9105-4109-9863-514f3e8d373f"
+          },
+          "Machine": {
+            "tableName": "e9c8943b-48dc-44bf-a10e-c4d239ec56a5"
+          },
+          "Prioridade": {
+            "tableName": "036aff13-e327-43a4-a981-46982b85f72e"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Estoque",
+      "Machine",
+      "Prioridade"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "9fe6806b-90b9-495e-b361-5ee0e885d081"
+  },
+  "fb56da50-a0a3-4b15-95d1-f86dd6e7a370": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/laborbol/partial-builds/390724148/1.0.1641.3327/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "fb56da50-a0a3-4b15-95d1-f86dd6e7a370"
+  }
+}

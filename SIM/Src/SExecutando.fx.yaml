@@ -1,0 +1,426 @@
+SExecutando As screen:
+    Fill: =
+
+    Rectangle1_13 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        Fill: =RGBA(128, 48, 199, 1)
+        Height: =113
+        Width: =640
+        ZIndex: =2
+
+    Arrow1_7 As arrow.backArrow:
+        Fill: =RGBA(2, 245, 59, 1)
+        Height: =70
+        OnSelect: =Navigate(SPedencias, ScreenTransition.Fade)
+        Width: =70
+        X: =26
+        Y: =27
+        ZIndex: =3
+
+    Label1_3 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Font: =Font.Georgia
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =30
+        Text: ="Lista Em Execução"
+        Width: =544
+        X: =96
+        Y: =27
+        ZIndex: =4
+
+    Rectangle1_14 As rectangle:
+        BorderColor: =RGBA(237, 237, 237, 1)
+        Fill: =RGBA(128, 48, 199, 1)
+        Height: =113
+        Width: =640
+        Y: =1023
+        ZIndex: =5
+
+    Image5_2 As image:
+        Height: =70
+        Image: ='lista-de-pendencias'
+        OnSelect: =Navigate(SExecutando, ScreenTransition.Fade)
+        Width: =70
+        X: =488
+        Y: =1060
+        ZIndex: =6
+
+    Label7_1 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =70
+        Size: =21
+        Text: ="Nova Pendencia"
+        Width: =243
+        X: =396
+        Y: =1004
+        ZIndex: =7
+
+    Button5_1 As button:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(109, 49, 162, 1)
+        DisabledFill: =RGBA(109, 49, 162, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =113
+        HoverColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =ColorFade(RGBA(0, 0, 0, 0), -20%)
+        OnSelect: =NewForm(Form2);Navigate(SNovaPendencia, ScreenTransition.Fade)
+        Size: =24
+        Text: =""
+        Width: =280
+        X: =359
+        Y: =1023
+        ZIndex: =8
+
+    "Gallery2_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        BorderColor: =RGBA(0, 0, 0, 1)
+        DelayItemLoading: =true
+        Fill: =RGBA(202, 202, 202, 1)
+        Height: =813
+        Items: =Filter(Machine,Status = "EXECUTANDO")
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =334
+        Width: =589
+        X: =25
+        Y: =191
+        ZIndex: =9
+
+        Title2_9 As label:
+            Align: =Align.Center
+            AutoHeight: =true
+            Fill: |-
+                =Switch(
+                    ThisItem.Prioridade,
+                    
+                "Alta"
+                , Color.Red,
+                    
+                "Media"
+                , Color.Yellow,
+                    
+                "Baixa"
+                , Color.Green,
+                    
+                "Programável"
+                , Color.White,
+                    
+                /* Valor padrão caso nenhum dos casos acima seja atendido: */
+                
+                    Color.Black 
+                /* ou qualquer outra cor que você desejar usar */
+                
+                )
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =29
+            LineHeight: =1.5
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Prioridade
+            VerticalAlign: =VerticalAlign.Top
+            Width: =163
+            Y: =210
+            ZIndex: =1
+
+        Image21_1 As image:
+            Height: =149
+            Image: =First(ThisItem.Attachments).Value
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =8
+            RadiusBottomRight: =8
+            RadiusTopLeft: =8
+            RadiusTopRight: =8
+            Width: =149
+            X: =14
+            Y: =25
+            ZIndex: =2
+
+        Title2_2 As label:
+            Font: =Font.Arial
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =30
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =269
+            X: =227
+            Y: =20
+            ZIndex: =3
+
+        Subtitle2_1 As label:
+            Align: =Align.Center
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =25
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: |-
+                ="Num: " & ThisItem.ID
+            VerticalAlign: =VerticalAlign.Top
+            Width: =86
+            X: =496
+            ZIndex: =4
+
+        NextArrow1_1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Height: =100
+            Icon: =Icon.NextArrow
+            OnSelect: =Set(varSeleted,ThisItem);Navigate(SEditarPendencia,ScreenTransition.Fade)
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Tooltip: ="Exibir detalhes do item"
+            Width: =100
+            X: =500
+            Y: =116
+            ZIndex: =5
+
+        Separator1_1 As rectangle:
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =6
+
+        Title2_7 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =180
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: |-
+                ="Descrição: " & ThisItem.Descricao
+            VerticalAlign: =VerticalAlign.Top
+            Width: =339
+            X: =173
+            Y: =50
+            ZIndex: =7
+
+        Title2_8 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =22
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.Criado
+            VerticalAlign: =VerticalAlign.Top
+            Width: =164
+            X: =291
+            Y: =230
+            ZIndex: =8
+
+        Title2_10 As label:
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =22
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: ="Aberto por " & ThisItem.'Created By'.DisplayName
+            VerticalAlign: =VerticalAlign.Top
+            Width: =261
+            X: =26
+            Y: =230
+            ZIndex: =9
+
+        Title2_19 As label:
+            Align: =Align.Center
+            AutoHeight: =true
+            Color: =RGBA(0, 0, 0, 1)
+            Fill: |-
+                =Switch(
+                    ThisItem.Status,
+                    
+                 
+                "PENDENTE"
+                , RGBA(255, 165, 0, 10),
+                    
+                "EXECUTANDO"
+                , RGBA(255, 255, 0, 10),
+                    
+                "FINALIZADA"
+                , RGBA(0, 255, 0, 10),
+                    
+                /* Valor padrão caso nenhum dos casos acima seja atendido: */
+                
+                    Color.Black 
+                /* ou qualquer outra cor que você desejar usar */
+                
+                )
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =29
+            LineHeight: =1.5
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Status
+            VerticalAlign: =VerticalAlign.Top
+            Width: =149
+            X: =14
+            Y: =186
+            ZIndex: =10
+
+        Rectangle3_1 As rectangle:
+            Fill: |-
+                =Switch(
+                    ThisItem.Prioridade,
+                    
+                "Alta"
+                , RGBA(250, 0, 25, 80),
+                    
+                "Media"
+                , Color.Yellow,
+                    
+                "Baixa"
+                , Color.Green,
+                    
+                "Programável"
+                , Color.White,
+                    
+                /* Valor padrão caso nenhum dos casos acima seja atendido: */
+                
+                    Color.Black 
+                /* ou qualquer outra cor que você desejar usar */
+                
+                )
+            Height: =36
+            OnSelect: =Select(Parent)
+            Width: =589
+            Y: =290
+            ZIndex: =11
+
+        Button7_1 As button:
+            Align: =Align.Left
+            Fill: =RGBA(54, 176, 75, 1)
+            Height: =51
+            OnSelect: |-
+                =Patch(Machine,ThisItem,{Status: "FINALIZADO"})
+            Text: ="Atribuir Solução"
+            Width: =221
+            X: =346
+            Y: =252
+            ZIndex: =13
+
+        Icon2_1 As icon.NextArrow:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =50
+            Icon: =Icon.NextArrow
+            OnSelect: |-
+                =Patch(Machine,ThisItem,{Status: "FIZALIZADO"})
+            Width: =32
+            X: =532
+            Y: =253
+            ZIndex: =14
+
+        Rectangle4_1 As rectangle:
+            Fill: |-
+                =Switch(
+                    ThisItem.Prioridade,
+                    
+                "Alta"
+                , Color.Red,
+                    
+                "Media"
+                , Color.Yellow,
+                    
+                "Baixa"
+                , Color.Green,
+                    
+                "Programável"
+                , Color.White,
+                    
+                /* Valor padrão caso nenhum dos casos acima seja atendido: */
+                
+                    Color.Black 
+                /* ou qualquer outra cor que você desejar usar */
+                
+                )
+            Height: =290
+            OnSelect: =Select(Parent)
+            Width: =14
+            ZIndex: =15
+
+        Button7_2 As button:
+            Align: =Align.Right
+            Fill: =RGBA(54, 176, 75, 1)
+            Height: =51
+            OnSelect: |-
+                =Patch(Machine,ThisItem,{Status: "PENDENTE"})
+            Text: ="Pausar Atividade"
+            Width: =221
+            X: =26
+            Y: =253
+            ZIndex: =16
+
+        Icon8 As icon.BackArrow:
+            Color: =RGBA(255, 255, 255, 1)
+            Icon: =Icon.BackArrow
+            OnSelect: |-
+                =Patch(Machine,ThisItem,{Status: "PENDENTE"})
+            Width: =32
+            X: =37
+            Y: =246
+            ZIndex: =17
+
+    Group2_1 As group:
+        Height: =5
+        Width: =5
+        X: =20
+        Y: =20
+        ZIndex: =13
+
+        Rectangle5_1 As rectangle:
+            BorderColor: =RGBA(109, 49, 162, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =78
+            Width: =589
+            X: =25
+            Y: =113
+            ZIndex: =10
+
+        Button6_2 As button:
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =50
+            OnSelect: |
+                =Navigate(SPedencias, ScreenTransition.Fade)
+            Size: =24
+            Text: ="Pendentes"
+            Width: =250
+            X: =26
+            Y: =130
+            ZIndex: =11
+
+        Button6_3 As button:
+            Fill: =RGBA(54, 176, 75, 1)
+            Height: =50
+            OnSelect: |
+                =Navigate(SFinalizada, ScreenTransition.Fade)
+            Size: =24
+            Text: ="Finalizadas"
+            Width: =250
+            X: =364
+            Y: =130
+            ZIndex: =12
+
